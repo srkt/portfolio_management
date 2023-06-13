@@ -67,7 +67,8 @@ class Sharpe:
 
         print("Optimized Weights:")
         for ticker, weight in zip(self.tickers, optimized_weights):
-            print(f"{ticker}: {weight:.2f}")
+            if abs(weight) > 1e-10:
+                print(f"{ticker}: {weight*100:.2f}%")
 
         print("\nPortfolio Statistics:")
         print(f"Expected Annual Return: { portfolio_returns.mean() * 252 :.2%}")
